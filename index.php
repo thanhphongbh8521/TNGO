@@ -2,11 +2,12 @@
 session_start();
 	include_once('db/connect.php')
 ?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>Bán hàng điện máy</title>
+	<title>Tra cứu trạm xe đạp TNGo</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -34,6 +35,7 @@ session_start();
 	<!-- pop-up-box -->
 	<link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- menu style -->
+	<link href="css/custom.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- //Custom-Files -->
 
 	<!-- web fonts -->
@@ -48,29 +50,31 @@ session_start();
 	<?php
 		include('include/topbar.php');
 		include('include/menu.php');
-		include('include/slider.php');
+		
 		if(isset($_GET['quanly'])){
 			$tam = $_GET ['quanly'];
 		}else{
 			$tam = '';
-		}
-
-		if($tam == 'danhmuc'){
-			include('include/danhmuc.php');		
-		}elseif($tam == 'chitietsp'){
-			include('include/chitietsp.php');
-		}elseif($tam == 'giohang'){
-			include('include/giohang.php');
-		}elseif($tam =='timkiem'){
-			include('include/timkiem.php');
-		}elseif($tam =='tintuc'){
+		}if($tam =='tintuc'){
 			include('include/tintuc.php');
-		}elseif($tam =='xemdonhang'){
-			include('include/xemdonhang.php');
-		}else{
-			include('include/home.php');
+		}elseif($tam =='chitiettin'){
+			include('include/chitiettin.php');
+		}elseif($tam =='dangbai'){
+			include('include/dangbai.php');
 		}
-			include('include/footer.php');
+		// elseif($tam =='danhsachtram'){
+		// 	include('include/danhsachtram.php');
+		// }
+		elseif($tam =='thongtintram'){
+			include('include/thongtintram.php');
+		}elseif($tam =='thuexe'){
+			include('include/rental.php');
+		}elseif($tam =='traxe'){
+			include('include/return.php');
+		}else{
+		include('include/home.php');
+		}
+		include('include/footer.php');
 	?>
 	
 	<!-- js-files -->
@@ -115,29 +119,7 @@ session_start();
 	</script>
 	<!-- //popup modal (for location)-->
 
-	<!-- cart-js -->
-	<!-- <script src="js/minicart.js"></script> -->
-	<script>
-		paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
-
-		paypals.minicarts.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
-	<!-- //cart-js -->
+	
 
 	<!-- password-script -->
 	<script>
